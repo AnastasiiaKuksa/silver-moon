@@ -1,0 +1,1137 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Silver Moon — ювелірні прикраси, створені з любов'ю до деталей.">
+    <title>Silver Moon | Jewelry Store</title>
+
+    <style>
+        /* ===== ОСНОВНІ НАЛАШТУВАННЯ ===== */
+
+        :root {
+            --navy: #172A43;
+            --navy-light: #2C435F;
+            --silver: #AEBCCB;
+            --blue-gray: #758AA3;
+            --ice: #E8EFF5;
+            --beige: #F1E9DD;
+            --cream: #FAF9F6;
+            --white: #FFFFFF;
+            --text: #526174;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: var(--cream);
+            color: var(--navy);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        /* ===== ВЕРХНЄ МЕНЮ ===== */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(250, 249, 246, 0.96);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #E4E6E8;
+        }
+
+        .navbar {
+            max-width: 1100px;
+            margin: auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 21px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--navy);
+        }
+
+        .logo-symbol {
+            font-size: 29px;
+            color: var(--blue-gray);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            color: var(--navy);
+            transition: color 0.25s;
+        }
+
+        .nav-links a:hover {
+            color: var(--blue-gray);
+        }
+
+        /* ===== ГОЛОВНИЙ ЕКРАН ===== */
+
+        .hero {
+            min-height: 410px;
+            padding: 70px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at 80% 20%,
+                    rgba(241, 233, 221, 0.8),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    130deg,
+                    #E9F0F6,
+                    #F5F1EA,
+                    #F9FAFB
+                );
+        }
+
+        .hero-content {
+            max-width: 680px;
+            animation: fadeIn 0.9s ease;
+        }
+
+        .hero-symbol {
+            color: var(--blue-gray);
+            font-size: 56px;
+            margin-bottom: 5px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 7vw, 59px);
+            letter-spacing: 8px;
+            color: var(--navy);
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            margin-top: 10px;
+            color: var(--blue-gray);
+            font-size: 12px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+        }
+
+        .hero-description {
+            max-width: 540px;
+            margin: 24px auto 27px;
+            color: var(--text);
+            font-size: 16px;
+        }
+
+        .main-button {
+            display: inline-block;
+            padding: 13px 29px;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 30px;
+            font-size: 14px;
+            letter-spacing: 0.4px;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(23, 42, 67, 0.12);
+        }
+
+        .main-button:hover {
+            background: var(--navy-light);
+            transform: translateY(-3px);
+        }
+
+        /* ===== БЛОК КОЛЕКЦІЙ ===== */
+
+        .collection-section {
+            padding: 65px 20px 75px;
+            background: var(--cream);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .section-heading span {
+            color: var(--blue-gray);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .section-heading h2 {
+            margin-top: 5px;
+            font-size: 32px;
+            color: var(--navy);
+        }
+
+        /* ===== КАРТКА КОЛЕКЦІЇ ===== */
+
+        .collection-card {
+            display: grid;
+            grid-template-columns: 1.05fr 1fr;
+            align-items: center;
+            gap: 35px;
+            padding: 25px;
+            background: var(--white);
+            border: 1px solid #E4E8EC;
+            border-radius: 18px;
+        }
+
+        /* ===== ГАЛЕРЕЯ ФОТОГРАФІЙ ===== */
+
+        .gallery-wrapper {
+            width: 100%;
+            min-width: 0;
+        }
+
+        .gallery {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border-radius: 13px;
+            background: #F0F2F4;
+        }
+
+        .gallery-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 12px;
+    transition: none;
+}
+
+.gallery-image:hover {
+    transform: none;
+}
+
+        .gallery-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 39px;
+            height: 39px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(250, 249, 246, 0.94);
+            color: var(--navy);
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.2s;
+        }
+
+        .gallery-arrow:hover {
+            background: var(--silver);
+        }
+
+        .gallery-prev {
+            left: 11px;
+        }
+
+        .gallery-next {
+            right: 11px;
+        }
+
+        .gallery-arrow[hidden] {
+            display: none;
+        }
+
+        /* ІНДИКАТОРИ ФОТО */
+
+        .gallery-dots {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 9px;
+            padding-top: 15px;
+        }
+
+        .gallery-dot {
+            width: 8px;
+            height: 8px;
+            padding: 0;
+            border: none;
+            border-radius: 50%;
+            background: var(--silver);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .gallery-dot.active {
+            background: var(--navy);
+            transform: scale(1.3);
+        }
+
+        .gallery-dots:empty {
+            display: none;
+        }
+
+        /* ===== ОПИС КОЛЕКЦІЇ ===== */
+
+        .collection-info {
+            padding: 10px 5px;
+        }
+
+        .collection-label {
+            color: var(--blue-gray);
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 3px;
+            margin-bottom: 9px;
+        }
+
+        .collection-info h3 {
+            color: var(--navy);
+            font-size: 29px;
+            margin-bottom: 15px;
+        }
+
+        .collection-info p {
+            color: var(--text);
+            font-size: 14px;
+            margin-bottom: 13px;
+        }
+
+        .telegram-note {
+            margin-top: 21px;
+            padding-top: 15px;
+            border-top: 1px solid #E5E8EB;
+            font-size: 13px;
+            color: var(--text);
+        }
+
+        .telegram-note a {
+            display: inline-block;
+            margin-top: 7px;
+            color: var(--navy);
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .telegram-note a:hover {
+            color: var(--blue-gray);
+        }
+
+        /* ===== ПЕРЕМИКАННЯ КОЛЕКЦІЙ ===== */
+
+        .collection-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .collection-arrow {
+            width: 42px;
+            height: 42px;
+            border: 1px solid #DCE2E8;
+            border-radius: 50%;
+            background: var(--cream);
+            color: var(--navy);
+            font-size: 23px;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .collection-arrow:hover {
+            background: var(--ice);
+            border-color: var(--silver);
+        }
+
+        .collection-counter {
+            color: var(--blue-gray);
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        /* ===== ФУТЕР ===== */
+
+        footer {
+            background: var(--navy);
+            color: var(--white);
+            padding: 36px 20px 21px;
+        }
+
+        .footer-container {
+            max-width: 1000px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 3px;
+        }
+
+        .footer-description {
+            color: var(--silver);
+            font-size: 13px;
+            margin: 7px 0 23px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 13px;
+            margin-bottom: 25px;
+        }
+
+        .social-link {
+            width: 43px;
+            height: 43px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgba(220, 234, 245, 0.3);
+            border-radius: 50%;
+            color: var(--ice);
+            transition: 0.25s;
+        }
+
+        .social-link:hover {
+            background: var(--ice);
+            color: var(--navy);
+            transform: translateY(-3px);
+        }
+
+        .social-link svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .social-link .outline {
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: rgba(220, 234, 245, 0.18);
+            margin-bottom: 17px;
+        }
+
+        .copyright {
+            color: var(--silver);
+            font-size: 12px;
+        }
+
+        /* ===== АНІМАЦІЯ ===== */
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== АДАПТАЦІЯ ДЛЯ ТЕЛЕФОНІВ ===== */
+
+        @media (max-width: 700px) {
+            .navbar {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                min-height: 370px;
+                padding: 55px 20px;
+            }
+
+            .hero h1 {
+                letter-spacing: 5px;
+            }
+
+            .hero-description {
+                font-size: 14px;
+            }
+
+            .collection-section {
+                padding: 45px 15px 55px;
+            }
+
+            .collection-card {
+                grid-template-columns: 1fr;
+                gap: 22px;
+                padding: 17px;
+            }
+
+            .collection-info {
+                text-align: center;
+                padding: 5px;
+            }
+
+            .collection-info h3 {
+                font-size: 25px;
+            }
+
+            .collection-controls {
+                justify-content: center;
+            }
+
+            .gallery {
+                max-width: 500px;
+                margin: auto;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== ВЕРХНЄ МЕНЮ ===== -->
+
+    <header>
+        <nav class="navbar">
+
+            <a href="#home" class="logo">
+                <span class="logo-symbol">☾</span>
+                SILVER MOON
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#home">Головна</a></li>
+                <li><a href="#collection">Колекції</a></li>
+                <li><a href="#footer">Контакти</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+
+    <!-- ===== ГОЛОВНА СТОРІНКА ===== -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="hero-symbol">☾</div>
+
+            <h1>SILVER MOON</h1>
+
+            <div class="hero-subtitle">
+                Jewelry Store
+            </div>
+
+            <p class="hero-description">
+                Прикраси, у яких кожна деталь має значення.
+                Витонченість, елегантність та особливий стиль
+                у кожному виробі.
+            </p>
+
+            <a
+                href="https://t.me/+nGImlm7ph4I0OTYy"
+                class="main-button"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Перейти до Telegram
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===== КОЛЕКЦІЇ ===== -->
+
+    <section class="collection-section" id="collection">
+
+        <div class="container">
+
+            <div class="section-heading">
+                <span>Silver Moon</span>
+                <h2>Наші колекції</h2>
+            </div>
+
+
+            <div class="collection-card">
+
+                <!-- ГАЛЕРЕЯ -->
+
+                <div class="gallery-wrapper">
+
+                    <div class="gallery">
+
+                        <img
+                            id="galleryImage"
+                            class="gallery-image"
+                            src="images/moon-sun-1.jpg"
+                            alt="Прикраса з колекції Moon & Sun"
+                        >
+
+                        <button
+                            class="gallery-arrow gallery-prev"
+                            id="photoPrev"
+                            aria-label="Попереднє фото"
+                            type="button"
+                        >
+                            ‹
+                        </button>
+
+                        <button
+                            class="gallery-arrow gallery-next"
+                            id="photoNext"
+                            aria-label="Наступне фото"
+                            type="button"
+                        >
+                            ›
+                        </button>
+
+                    </div>
+
+                    <div class="gallery-dots" id="galleryDots"></div>
+
+                </div>
+
+
+                <!-- ОПИС -->
+
+                <div class="collection-info">
+
+                    <div class="collection-label">
+                        Особлива колекція
+                    </div>
+
+                    <h3 id="collectionTitle">
+                        Moon & Sun
+                    </h3>
+
+                    <p id="collectionDescription">
+                        Кажуть, що для кожного Місяця потрібне своє Сонце.
+                        Саме цю ідею втілює наша пара браслетів —
+                        два доповнювальні символи, які створюють одне ціле.
+                    </p>
+
+                    <p id="collectionExtra">
+                        Місяць і Сонце — різні, але нероздільні.
+                        Дві прикраси символізують особливий зв'язок,
+                        близькість та тепло.
+                    </p>
+
+                  <p class="telegram-note">
+                        Більше новинок та прикрас дивіться в нашому
+                        <a href="https://t.me/+nGImlm7ph4I0OTYy" target="_blank">
+                            Telegram-каналі
+                        </a>.
+                    </p>
+
+                    <!-- ПЕРЕМИКАННЯ КОЛЕКЦІЙ -->
+
+                    <div class="collection-controls">
+
+                        <button
+                            class="collection-arrow"
+                            id="collectionPrev"
+                            type="button"
+                            aria-label="Попередня колекція"
+                        >
+                            ‹
+                        </button>
+
+                        <span
+                            class="collection-counter"
+                            id="collectionCounter"
+                        >
+                            01 / 02
+                        </span>
+
+                        <button
+                            class="collection-arrow"
+                            id="collectionNext"
+                            type="button"
+                            aria-label="Наступна колекція"
+                        >
+                            ›
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===== ФУТЕР ===== -->
+
+    <footer id="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-logo">
+                ☾ SILVER MOON
+            </div>
+
+            <p class="footer-description">
+                Jewelry Store — краса в кожній деталі.
+            </p>
+
+
+            <div class="social-links">
+
+                <!-- INSTAGRAM -->
+
+                <a
+                    class="social-link"
+                    href="https://www.instagram.com/fenoria_jewelry_/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    title="Instagram"
+                >
+                    <svg viewBox="0 0 24 24">
+                        <rect class="outline"
+                            x="3" y="3" width="18" height="18" rx="5"/>
+                        <circle class="outline"
+                            cx="12" cy="12" r="4"/>
+                        <circle cx="18" cy="6" r="1.3"/>
+                    </svg>
+                </a>
+
+
+
+                <!-- YOUTUBE -->
+
+                <a
+                    class="social-link"
+                    href="https://www.youtube.com/@zarina6695/videos"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="YouTube"
+                    title="YouTube"
+                >
+                    <svg viewBox="0 0 24 24">
+                        <path d="M23 7a3 3 0 0 0-2.1-2.1
+                        C19 4.4 12 4.4 12 4.4s-7 0-8.9.5
+                        A3 3 0 0 0 1 7a31 31 0 0 0-.5 5
+                        31 31 0 0 0 .5 5 3 3 0 0 0 2.1 2.1
+                        c1.9.5 8.9.5 8.9.5s7 0 8.9-.5
+                        A3 3 0 0 0 23 17a31 31 0 0 0 .5-5
+                        31 31 0 0 0-.5-5z"/>
+                        <path d="m10 9 6 3-6 3z" fill="#172A43"/>
+                    </svg>
+                </a>
+
+
+                <!-- PINTEREST -->
+
+                <a
+                    class="social-link"
+                    href="https://pin.it/7pWoFl0Ah"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Pinterest"
+                    title="Pinterest"
+                >
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2a10 10 0 0 0-3.6 19.3
+                        c0-.8 0-1.8.2-2.7l1.3-5.5
+                        s-.3-.6-.3-1.5c0-1.4.8-2.4 1.8-2.4
+                        .8 0 1.2.6 1.2 1.4
+                        0 .8-.5 2.1-.8 3.3
+                        -.2 1 .5 1.8 1.5 1.8
+                        1.8 0 3.2-1.9 3.2-4.6
+                        0-2.4-1.7-4.1-4.2-4.1
+                        -2.9 0-4.6 2.2-4.6 4.4
+                        0 .9.3 1.9.8 2.4
+                        .2.2.2.3.1.5l-.3 1
+                        c-.1.3-.2.4-.5.2
+                        -1.3-.6-2.1-2.4-2.1-3.9
+                        0-3.2 2.3-6.1 6.7-6.1
+                        3.5 0 6.2 2.5 6.2 5.8
+                        0 3.5-2.2 6.4-5.3 6.4
+                        -1 0-2-.6-2.4-1.2l-.7 2.7
+                        c-.3 1-.9 1.9-1.3 2.6
+                        A10 10 0 1 0 12 2z"/>
+                    </svg>
+                </a>
+
+
+                <!-- TELEGRAM -->
+
+                <a
+                    class="social-link"
+                    href="https://t.me/+nGImlm7ph4I0OTYy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Telegram"
+                    title="Telegram"
+                >
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21.5 3.5 18.3 20c-.2 1.2-.9 1.5-1.8.9
+                        l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1
+                        9.3-8.4c.4-.4-.1-.6-.6-.2L5.7 13.6
+                        .8 12c-1.1-.3-1.1-1 .2-1.5L20 4.1
+                        c1-.4 1.8.2 1.5-.6z"/>
+                    </svg>
+                </a>
+
+            </div>
+
+
+            <div class="footer-divider"></div>
+
+            <p class="copyright">
+                © 2026 Silver Moon. Усі права захищені.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ===== JAVASCRIPT: КОЛЕКЦІЇ ТА ФОТО ===== -->
+
+    <script>
+
+        /*
+        =====================================
+        ДАНІ КОЛЕКЦІЙ
+
+        Moon & Sun — 1 фотографія
+        Starlight — 3 фотографії
+
+        Для нової колекції можна додати
+        ще один об'єкт у цей масив.
+        =====================================
+        */
+
+        const collections = [
+
+            {
+                title: "Moon & Sun",
+
+                description:
+                    "Кажуть, що для кожного Місяця потрібне своє Сонце. Саме цю ідею втілює наша пара браслетів — два доповнювальні символи, які створюють одне ціле.",
+
+                extra:
+                    "Місяць і Сонце — різні, але нероздільні. Дві прикраси символізують особливий зв'язок, близькість та тепло.",
+
+                photos: [
+                    "images/moon-sun-1.jpg"
+                ]
+            },
+
+            {
+                title: "Starlight",
+
+                description:
+                    "Колекція Starlight натхненна красою нічного неба та сяйвом зірок. Витончені прикраси для особливих моментів.",
+
+                extra:
+                    "Кожна деталь цієї колекції додає образу ніжності та неповторного блиску.",
+
+                photos: [
+                    "images/starlight-1.jpg",
+                    "images/starlight-2.jpg",
+                    "images/starlight-3.jpg"
+                ]
+            }
+
+        ];
+
+
+        /* ===== СТАН САЙТУ ===== */
+
+        let currentCollection = 0;
+        let currentPhoto = 0;
+        let autoSlide = null;
+
+
+        /* ===== ЕЛЕМЕНТИ СТОРІНКИ ===== */
+
+        const galleryImage =
+            document.getElementById("galleryImage");
+
+        const galleryDots =
+            document.getElementById("galleryDots");
+
+        const collectionTitle =
+            document.getElementById("collectionTitle");
+
+        const collectionDescription =
+            document.getElementById("collectionDescription");
+
+        const collectionExtra =
+            document.getElementById("collectionExtra");
+
+        const collectionCounter =
+            document.getElementById("collectionCounter");
+
+        const photoPrev =
+            document.getElementById("photoPrev");
+
+        const photoNext =
+            document.getElementById("photoNext");
+
+
+        /* ===== ВІДОБРАЖЕННЯ КОЛЕКЦІЇ ===== */
+
+        function renderCollection() {
+
+            const collection = collections[currentCollection];
+
+            collectionTitle.textContent = collection.title;
+
+            collectionDescription.textContent =
+                collection.description;
+
+            collectionExtra.textContent =
+                collection.extra;
+
+            collectionCounter.textContent =
+                String(currentCollection + 1).padStart(2, "0") +
+                " / " +
+                String(collections.length).padStart(2, "0");
+
+            currentPhoto = 0;
+
+            renderPhoto();
+
+            startAutoSlide();
+        }
+
+
+        /* ===== ВІДОБРАЖЕННЯ ФОТО ===== */
+
+        function renderPhoto() {
+
+            const collection = collections[currentCollection];
+
+            const photos = collection.photos;
+
+            galleryImage.src = photos[currentPhoto];
+
+            galleryImage.alt =
+                collection.title + " — фото " + (currentPhoto + 1);
+
+            const hasMultiplePhotos = photos.length > 1;
+
+            // Якщо фото одне, стрілки не показуються.
+
+            photoPrev.hidden = !hasMultiplePhotos;
+            photoNext.hidden = !hasMultiplePhotos;
+
+            // Індикатори створюються тільки для кількох фото.
+
+            galleryDots.innerHTML = "";
+
+            if (!hasMultiplePhotos) {
+                return;
+            }
+
+            photos.forEach((photo, index) => {
+
+                const dot = document.createElement("button");
+
+                dot.type = "button";
+
+                dot.className =
+                    "gallery-dot" +
+                    (index === currentPhoto ? " active" : "");
+
+                dot.setAttribute(
+                    "aria-label",
+                    "Перейти до фото " + (index + 1)
+                );
+
+                dot.addEventListener("click", () => {
+
+                    currentPhoto = index;
+
+                    renderPhoto();
+
+                    startAutoSlide();
+
+                });
+
+                galleryDots.appendChild(dot);
+
+            });
+
+        }
+
+
+        /* ===== ПЕРЕМИКАННЯ ФОТО ===== */
+
+        function changePhoto(direction) {
+
+            const photos =
+                collections[currentCollection].photos;
+
+            if (photos.length <= 1) {
+                return;
+            }
+
+            currentPhoto =
+                (currentPhoto + direction + photos.length) %
+                photos.length;
+
+            renderPhoto();
+
+            startAutoSlide();
+
+        }
+
+
+        /* ===== ПЕРЕМИКАННЯ КОЛЕКЦІЙ ===== */
+
+        function changeCollection(direction) {
+
+            currentCollection =
+                (currentCollection + direction + collections.length) %
+                collections.length;
+
+            renderCollection();
+
+        }
+
+
+        /* ===== АВТОМАТИЧНЕ ПЕРЕМИКАННЯ ===== */
+
+        function startAutoSlide() {
+
+            clearInterval(autoSlide);
+
+            const photos =
+                collections[currentCollection].photos;
+
+            // Автоматичне перемикання тільки для кількох фото.
+
+            if (photos.length > 1) {
+
+                autoSlide = setInterval(() => {
+
+                    currentPhoto =
+                        (currentPhoto + 1) % photos.length;
+
+                    renderPhoto();
+
+                }, 4500);
+
+            }
+
+        }
+
+
+        /* ===== КНОПКИ ФОТОГАЛЕРЕЇ ===== */
+
+        photoPrev.addEventListener("click", () => {
+            changePhoto(-1);
+        });
+
+        photoNext.addEventListener("click", () => {
+            changePhoto(1);
+        });
+
+
+        /* ===== КНОПКИ КОЛЕКЦІЙ ===== */
+
+        document
+            .getElementById("collectionPrev")
+            .addEventListener("click", () => {
+                changeCollection(-1);
+            });
+
+        document
+            .getElementById("collectionNext")
+            .addEventListener("click", () => {
+                changeCollection(1);
+            });
+
+
+        /* ===== ПАУЗА ПІД ЧАС НАВЕДЕННЯ ===== */
+
+        const gallery =
+            document.querySelector(".gallery");
+
+        gallery.addEventListener("mouseenter", () => {
+            clearInterval(autoSlide);
+        });
+
+        gallery.addEventListener("mouseleave", () => {
+            startAutoSlide();
+        });
+
+
+        /* ===== ЗАПУСК САЙТУ ===== */
+
+        renderCollection();
+
+    </script>
+
+</body>
+</html>
